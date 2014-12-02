@@ -1,6 +1,12 @@
 apply plugin: 'java'
 apply from: 'rules.gradle'
 
+['deploy', 'idea', 'eclipse'].each { g ->
+    if (file("${g}.gradle").exists()) {
+        apply from: "${g}.gradle"
+    }
+}
+
 group = 'com.android.volley'
 version = '19.1.0'
 
@@ -10,8 +16,4 @@ repositories {
 
 dependencies {
     compile 'com.google.android:android:4.+'
-}
-
-if (file('deploy.gradle').exists()) {
-    apply from: 'deploy.gradle'
 }

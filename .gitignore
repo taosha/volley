@@ -1,6 +1,24 @@
-bin
-gen
+# maven
+target
+
+# gradle
 .gradle
 build
-.settings
 deploy.gradle
+idea.gradle
+eclipse.gradle
+
+# idea
+.idea
+*.iml
+*.ipr
+*.iws
+
+# eclipse
+.classpath
+.project
+.settings
+bin
+
+# mac
+*.DS_Store
