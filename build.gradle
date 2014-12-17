@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply from: 'rules.gradle'
+apply from: 'config.gradle'
 
 ['deploy', 'idea', 'eclipse'].each { g ->
     if (file("${g}.gradle").exists()) {
@@ -10,10 +11,13 @@ apply from: 'rules.gradle'
 group = 'com.android.volley'
 version = '19.1.0'
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+ 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile 'com.google.android:android:4.+'
+    provided 'com.google.android:android:4.+'
 }
