@@ -2,10 +2,8 @@ apply plugin: 'java'
 apply from: 'rules.gradle'
 apply from: 'config.gradle'
 
-['deploy', 'idea', 'eclipse'].each { g ->
-    if (file("${g}.gradle").exists()) {
-        apply from: "${g}.gradle"
-    }
+file('gradle.d').list().each {
+    it ==~ /.+\.gradle/ && apply(from: "gradle.d/$it")
 }
 
 group = 'com.android.volley'
@@ -15,7 +13,7 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
  
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
